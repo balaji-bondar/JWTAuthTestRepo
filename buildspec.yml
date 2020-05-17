@@ -1,6 +1,10 @@
 version: 0.2
 # Defining default values for all jobs
 defaults: &defaults
+env:
+  variables:
+    SFDX_USE_GENERIC_UNIX_KEYCHAIN: "true"
+    SFDX_AUDIENCE_URL: "https://login.salesforce.com"
 phases:
   pre_build:
     commands:
