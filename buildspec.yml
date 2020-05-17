@@ -8,7 +8,7 @@ phases:
       #- npm install sfdx-cli --global
   build:
     commands:
-      - echo Build started on `17/05/2020`
+      - (JWTAuthTestRepo)echo Build started on ...
       #- echo $salesforceSITInstanceURL
       #- echo $salesforceSITUserName
       #- echo $salesforceSITClientId
