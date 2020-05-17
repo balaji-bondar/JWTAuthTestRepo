@@ -8,11 +8,12 @@ phases:
       #- npm install sfdx-cli --global
   build:
     commands:
-      - echo Build started on `14/05/2020`
-      - echo $salesforceSITInstanceURL
-      - echo $salesforceSITUserName
-      - echo $salesforceSITClientId
-      - sfdx --help
+      - echo Build started on `17/05/2020`
+      #- echo $salesforceSITInstanceURL
+      #- echo $salesforceSITUserName
+      #- echo $salesforceSITClientId
+      #- sfdx --help
+      - sfdx force:doc:commands:list
       #- sfdx force:auth:jwt:grant --clientid 3MVG97quAmFZJfVyq3tLvSSXPZetZl3qbVbXU9EanjeRiVjbfUuab7ULGYnFCgt1Shpu37vRZ9sA5KwshFfhK --jwtkeyfile ./buildfiles/server.key --username balajibondar@gmail.com.CICD --instanceurl https://login.salesforce.com/ -a SIT
       - sfdx force:auth:jwt:grant --clientid 3MVG97quAmFZJfVyq3tLvSSXPZetZl3qbVbXU9EanjeRiVjbfUuab7ULGYnFCgt1Shpu37vRZ9sA5KwshFfhK --jwtkeyfile ./buildfiles/server.key --username balajibondar@gmail.com.CICD --instanceurl https://login.salesforce.com/ -a SIT
       #- sfdx force:mdapi:deploy -l RunLocalTests -c -d ./force-app/main/default/ -u SIT -w 10
