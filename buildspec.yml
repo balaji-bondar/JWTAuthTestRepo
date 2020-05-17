@@ -8,7 +8,7 @@ env:
 phases:
   pre_build:
     commands:
-      - echo Nothing to do in the pre_build phase...
+      - echo Nothing to do in the pre_build phase JWTAuthTestRepo ...
       #- npm install sfdx-cli --global
   build:
     commands:
@@ -19,6 +19,6 @@ phases:
       #- sfdx --help
       - sfdx force:doc:commands:list
       #- sfdx force:auth:jwt:grant --clientid 3MVG97quAmFZJfVyq3tLvSSXPZVmzNk9.oE45U60WYJmJ0wOXdimoJ5R5oVcCaTpjS0RQHIc5ZQugrN1ptkqq --jwtkeyfile ./buildfiles/server.key --username balajibondar@gmail.com.CICD --instanceurl https://login.salesforce.com/ -a SIT
-      - sfdx force:auth:jwt:grant --clientid 3MVG97quAmFZJfVyq3tLvSSXPZVmzNk9.oE45U60WYJmJ0wOXdimoJ5R5oVcCaTpjS0RQHIc5ZQugrN1ptkqq --jwtkeyfile ./buildfiles/server.key --username balajibondar@gmail.com.CICD --instanceurl https://login.salesforce.com/ -a SIT
+      - sfdx force:auth:jwt:grant --clientid 3MVG97quAmFZJfVyq3tLvSSXPZVmzNk9.oE45U60WYJmJ0wOXdimoJ5R5oVcCaTpjS0RQHIc5ZQugrN1ptkqq --username balajibondar@gmail.com.cicd --jwtkeyfile ./buildfiles/server.key --instanceurl https://login.salesforce.com/ -a SIT
       #- sfdx force:mdapi:deploy -l RunLocalTests -c -d ./force-app/main/default/ -u SIT -w 10
       
