@@ -23,4 +23,4 @@ phases:
       #- sfdx force:auth:jwt:grant --clientid 3MVG97quAmFZJfVyq3tLvSSXPZVmzNk9.oE45U60WYJmJ0wOXdimoJ5R5oVcCaTpjS0RQHIc5ZQugrN1ptkqq --username balajibondar@gmail.com.cicd --jwtkeyfile ./buildfiles/server.key --instanceurl https://login.salesforce.com/ -a SIT
       - sfdx force:auth:jwt:grant --clientid 3MVG97quAmFZJfVyq3tLvSSXPZVmzNk9.oE45U60WYJmJ0wOXdimoJ5R5oVcCaTpjS0RQHIc5ZQugrN1ptkqq --username balajibondar@gmail.com.cicd --jwtkeyfile ./server.key --instanceurl https://login.salesforce.com/ -a SIT
       #- sfdx force:mdapi:deploy -l RunLocalTests -c -d ./force-app/main/default/ -u SIT -w 10
-      - git help
+      - git --help
