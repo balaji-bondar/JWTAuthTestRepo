@@ -1,9 +1,7 @@
 version: 0.2
 # Defining default values for all jobs
 defaults: &defaults
-env:
-  variables:
-   
+
 phases:
   pre_build:
     commands:
