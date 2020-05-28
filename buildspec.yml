@@ -9,8 +9,8 @@ phases:
   pre_build:
     commands:
       - echo Nothing to do in the pre_build phase JWTAuthTestRepo ...
-      #- npm install sfdx-cli --global
-      - apt-get update -y && apt-get install -y git
+      - npm install sfdx-cli --global
+      #- apt-get update -y && apt-get install -y git
   build:
     commands:
       - echo Build started on ...
