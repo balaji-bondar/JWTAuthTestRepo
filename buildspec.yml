@@ -1,24 +1,39 @@
 version: 0.2
 # Defining default values for all jobs
 defaults: &defaults
+env:
+  variables:
+    SFDX_USE_GENERIC_UNIX_KEYCHAIN: "true"
 
 phases:
   pre_build:
     commands:
-      - echo pre_build phase JWTAuthTestRepo ...
       - npm install sfdx-cli --global
-      #- apt-get update -y && apt-get install -y git
+      #- npm update --global sfdx-cli
+      - curl -fL https://getcli.jfrog.io | sh
   build:
     commands:
-      - echo Build started on ...
-      #- echo $salesforceSITInstanceURL
-      #- echo $salesforceSITUserName
-      #- echo $salesforceSITClientId
+      - echo Build started...
+      - echo $salesforceInstanceURL
+      - echo $salesforceUserName
+      - echo $salesforceClientId
+      - echo $CODEBUILD_SOURCE_REPO_URL
+      - echo $CODEBUILD_BUILD_NUMBER
+      - echo $CODEBUILD_RESOLVED_SOURCE_VERSION
+      - echo $CODEBUILD_SOURCE_VERSION
+      - echo $CODEBUILD_START_TIME
+      - echo $CODEBUILD_SRC_DIR
+      
       #- sfdx --help
-      #- sfdx plugins:install salesforcedx@latest
-      #- sfdx force:doc:commands:list
-      #- sfdx force:auth:jwt:grant --clientid 3MVG97quAmFZJfVyq3tLvSSXPZVmzNk9.oE45U60WYJmJ0wOXdimoJ5R5oVcCaTpjS0RQHIc5ZQugrN1ptkqq --jwtkeyfile ./buildfiles/server.key --username balajibondar@gmail.com.CICD --instanceurl https://login.salesforce.com/ -a SIT
-      #- sfdx force:auth:jwt:grant --clientid 3MVG97quAmFZJfVyq3tLvSSXPZVmzNk9.oE45U60WYJmJ0wOXdimoJ5R5oVcCaTpjS0RQHIc5ZQugrN1ptkqq --username balajibondar@gmail.com.cicd --jwtkeyfile ./buildfiles/server.key --instanceurl https://login.salesforce.com/ -a SIT
-      - sfdx force:auth:jwt:grant --clientid 3MVG97quAmFZJfVyq3tLvSSXPZVmzNk9.oE45U60WYJmJ0wOXdimoJ5R5oVcCaTpjS0RQHIc5ZQugrN1ptkqq --username balajibondar@gmail.com.cicd --jwtkeyfile ./server.key --instanceurl https://login.salesforce.com/ -a SIT
+      - sfdx force:auth:jwt:grant --clientid $salesforceClientId --jwtkeyfile ./server.key --username $salesforceUserName --instanceurl $salesforceInstanceURL -a SIT
       #- sfdx force:mdapi:deploy -l RunLocalTests -c -d ./force-app/main/default/ -u SIT -w 10
-      #- git --help
+      
+  post_build:
+    commands:
+      #- ls $CODEBUILD_SRC_DIR
+      - zip $CODEBUILD_SRC_DIR/MyBuild.zip -r $CODEBUILD_SRC_DIR * 
+      #- ls $CODEBUILD_SRC_DIR
+      #- ./jfrog rt config --url https://sdc.jfrog.io/artifactory/ --user salesforce-ci --password AKCp5fTQixdiS5iECcdfqYug9kkW2CJUrb9GJz3MechLrfemcasce5cJXxG1RW1fLDd94rw5d --interactive=false
+      #- ./jfrog rt u $CODEBUILD_SRC_DIR/MyBuild.zip libs-release-local/ --build-name=QABuild --build-number=12345
+      
+ 
